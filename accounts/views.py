@@ -53,7 +53,9 @@ def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
 
+#no lo puse
     total_customers = customers.count()
+#-------
 
     total_orders = orders.count()
     delivered = orders.filter(status='Delivered').count()
