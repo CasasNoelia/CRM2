@@ -9,11 +9,12 @@ urlpatterns = [
 
 
     path('', views.home, name="home"),
-    path('products/', views.products, name="products"),
-    path('customer/<str:pk_test>/',views.customer,name="customer"),
+    path('empleo/', views.empleo, name="empleo"),    #products
 
-    path('create_order/',views.createOrder, name="create_order"),
-    path('update_order/<str:pk>/',views.updateOrder, name="update_order"),
-    path('delete_order/<str:pk>/',views.deleteOrder, name="delete_order")
+    path('usuario/<str:pk_test>/',views.usuario,name="usuario"), #custumer
+
+    path('create_recibo/',views.createRecibo, name="create_recibo"),   #'create_order/',views.createOrder, name="create_order"
+    path('update_recibo/<str:pk>/',views.updateRecibo, name="update_recibo"),
+    path('delete_recibo/<str:pk>/',views.deleteRecibo, name="delete_recibo")
 ]
 

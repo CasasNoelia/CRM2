@@ -2,12 +2,13 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Order
+from .models import Recibo
 
+#revisar
 
 class OrderForm(ModelForm):
     class Meta:
-        model = Order
+        model = Recibo
         fields= '__all__'
 
 class CreateUserForm(UserCreationForm):
