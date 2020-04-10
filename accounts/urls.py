@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('create_recibo/',views.createRecibo, name="create_recibo"),   #'create_order/',views.createOrder, name="create_order"
     path('update_recibo/<str:pk>/',views.updateRecibo, name="update_recibo"),
+    path('informacion/', views.Informacion, name="informacion"),
     path('delete_recibo/<str:pk>/',views.deleteRecibo, name="delete_recibo")
 ]
 

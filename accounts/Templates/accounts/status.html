@@ -16,12 +16,12 @@
 
     <div class="col">
 		<div class="col-md">
-			<div class="card text-center text-black  mb-3" id="recibos-cantidad">
+			<div class="card text-center text-black  mb-3" id="recibos-partida">
 			  	<div class="card-header">
 			  		<h5 class="card-title">Total partidas</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ partidas }}</h3>
+			    	<h3 class="card-title">{{ partida }}</h3>
 			  	</div>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 			  		<h5 class="card-title">Total descuentos </h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ descuentos }}</h3>
+			    	<h3 class="card-title">{{ request.user.usuario.empleo.salario}}</h3>
 			  	</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 			  		<h5 class="card-title">Salario Nominal</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ i.salario }}</h3>
+			    	<h3 class="card-title">{{ Empleo.salario }}</h3>
 			  	</div>
 			</div>
 		</div>

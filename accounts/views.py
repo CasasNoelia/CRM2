@@ -58,8 +58,10 @@ def home(request):
 
 
     total_recibos = recibos.count()
-    cantidad = recibos.filter(status='partidas').count()
-    pending = recibos.filter(status='Pending').count()
+
+
+    cantidad = recibos.filter(partida='Hs Extras').count()
+    pending = recibos.filter(partida='Feriado').count()
 
     context = {'recibos': recibos, 'usuarios': usuarios, 'total_recibos': total_recibos, 'total_usuarios': total_usuarios,'cantidad': cantidad, 'pending': pending}
 
@@ -118,3 +120,6 @@ def deleteRecibo(request, pk):
 
     context = {'item': recibo}
     return render(request, 'accounts/delete.html',context)
+
+def Informacion(request):
+    return render(request, 'accounts/informacion.html')
