@@ -58,10 +58,10 @@ def home(request):
 
 
     total_recibos = recibos.count()
-    delivered = recibos.filter(status='Delivered').count()
+    cantidad = recibos.filter(status='partidas').count()
     pending = recibos.filter(status='Pending').count()
 
-    context = {'recibos': recibos, 'usuarios': usuarios, 'total_recibos': total_recibos, 'total_usuarios': total_usuarios,'delivered': delivered, 'pending': pending}
+    context = {'recibos': recibos, 'usuarios': usuarios, 'total_recibos': total_recibos, 'total_usuarios': total_usuarios,'cantidad': cantidad, 'pending': pending}
 
     return render(request,'accounts/dashboard.html',context)
 

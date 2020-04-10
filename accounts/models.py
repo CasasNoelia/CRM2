@@ -41,12 +41,13 @@ class Recibo(models.Model): # Order
     STATUS = (
         ('Pending', 'Pending'),
         ('Out for delivery', 'Out for delivery'),
-        ('Delivered', 'Delivered'),
+        ('partidas', 'partidas'),
         )
     usuario = models.ForeignKey(Usuario, null=True, on_delete=models.SET_NULL)
     empleo = models.ForeignKey(Empleo, null=True, on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    cantidad = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.empleo.name

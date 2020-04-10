@@ -14,14 +14,28 @@
 		</div>
 	</div>
 
-	<div class="col">
+    <div class="col">
 		<div class="col-md">
-			<div class="card text-center text-black  mb-3" id="recibos-delivered">
+			<div class="card text-center text-black  mb-3" id="recibos-cantidad">
 			  	<div class="card-header">
-			  		<h5 class="card-title">Recibos Delivered</h5>
+			  		<h5 class="card-title">Total partidas</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ delivered }}</h3>
+			    	<h3 class="card-title">{{ partidas }}</h3>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-black  mb-3" id="recibos-descuentos">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total descuentos </h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{ descuentos }}</h3>
 			  	</div>
 			</div>
 		</div>
@@ -29,12 +43,12 @@
 
 	<div class="col">
 		<div class="col-md">
-			<div class="card text-center text-black  mb-3" id="recibos-pending">
+			<div class="card text-center text-black  mb-3" id="recibos-salario">
 			  	<div class="card-header">
-			  		<h5 class="card-title">Recibos Pending</h5>
+			  		<h5 class="card-title">Salario Nominal</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ pending }}</h3>
+			    	<h3 class="card-title">{{ i.salario }}</h3>
 			  	</div>
 			</div>
 		</div>
