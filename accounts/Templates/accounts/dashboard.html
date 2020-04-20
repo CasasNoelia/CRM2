@@ -1,0 +1,77 @@
+{%  extends 'accounts/main.html' %}
+{%  block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>USUARIO:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Crear / Modificar</a>
+			<table class="table table-sm">
+				<tr>
+                    <th></th>
+					<th>Usuario</th>
+					<th>Mail</th>
+				</tr>
+
+                    <tr>
+                        <td><a class="btn btn-sm btn-info" href=" ">editar</a></td>
+                        <td>{{request.user}}</td>
+                        <td>{{request.user.email}}</td>
+                    </tr>
+                 <div class="card card-body">
+			<table class="table table-sm">
+                <tr>
+                    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_empleo' %}">Ingresar Empleo</a>
+                    <th>Empleo</th>
+					<th>Salario</th>
+					<th>Categoria</th>
+				</tr>
+                {% for empleo in empleos %}
+                    <tr>
+                        <td>{{empleo.empresa}}</td>
+                        <td>{{empleo.salario}}</td>
+                        <td>{{empleo.grupo}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+	<div class="col-md-7">
+		<h5>PARTIDAS</h5>
+		<hr>
+		<div class="card card-body">
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_recibo' %}">Agregar partidas</a>
+			<table class="table table-sm">
+                <tr>
+					<th>Tipo partida</th>
+					<th>Fecha generada</th>
+                    <th>Cantidad Hs</th>
+					<th>Monto</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+				</tr>
+                {% for recibo in recibos %}
+                    <tr>
+                        <td>{{recibo.partida}}</td>
+                        <td>{{recibo.date_created}}</td>
+                        <td>{{recibo.cantidad}}</td>
+                        <td>{{recibo.Monto}}</td>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'update_recibo' recibo.id %}">Actualizar</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_recibo' recibo.id %}">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}
