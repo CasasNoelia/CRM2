@@ -21,7 +21,7 @@ def registerPage(request):
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + user)
+                messages.success(request,'Cuenta creada con exito por ' + user)
                 return redirect('login')
 
         context = {'form': form}
@@ -58,6 +58,7 @@ def home(request):
     recibos = Recibo.objects.all()
     usuarios = Usuario.objects.all()
     empleos = Empleo.objects.all()
+    #Usuario.objects.all().delete()
 
     cantidad = recibos.filter(partida='Hs Extras').count()
     pending = recibos.filter(partida='Feriado').count()

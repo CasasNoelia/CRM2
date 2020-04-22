@@ -28,14 +28,19 @@
                 <tr>
                     <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_empleo' %}">Ingresar Empleo</a>
                     <th>Empleo</th>
+                    <th>Grupo</th>
 					<th>Salario</th>
-					<th>Categoria</th>
+                    <th>Valor día</th>
+                    <th>Valor hora</th>
+
 				</tr>
                 {% for empleo in empleos %}
                     <tr>
                         <td>{{empleo.empresa}}</td>
-                        <td>{{empleo.salario}}</td>
                         <td>{{empleo.grupo}}</td>
+                        <td>{{empleo.salario}}</td>
+                        <td>{{empleo.obtener_valor_dia}}</td>
+                        <td>{{empleo.obtener_valor_hora}}</td>
                     </tr>
                 {% endfor %}
             </table>
@@ -60,9 +65,9 @@
                 {% for recibo in recibos %}
                     <tr>
                         <td>{{recibo.partida}}</td>
-                        <td>{{recibo.date_created}}</td>
+                        <td>{{recibo.fecha_ingreso}}</td>
                         <td>{{recibo.cantidad}}</td>
-                        <td>{{recibo.Monto}}</td>
+                        <td>{{recibo.monto}}</td>
                         <td><a class="btn btn-sm btn-info" href="{% url 'update_recibo' recibo.id %}">Actualizar</a></td>
                         <td><a class="btn btn-sm btn-danger" href="{% url 'delete_recibo' recibo.id %}">Eliminar</a></td>
                     </tr>
