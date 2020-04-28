@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,   login,  logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+
 
 
 def registerPage(request):
@@ -41,7 +41,7 @@ def loginPage(request):
                 login(request, user)
                 return redirect('home')
             else:
-                messages.info(request, 'Username OR password is incorrect')
+                messages.info(request, 'Usuario o contraseña incorrecta')
 
         context = {}
         return render(request, 'accounts/login.html', context)
@@ -56,14 +56,14 @@ def logoutUser(request):
 def home(request):
 
     recibos = Recibo.objects.all()
-    usuarios = Usuario.objects.all()
+    usuarios = Usuario.objects.get(pk=request.user.id)
     empleos = Empleo.objects.all()
-    #Usuario.objects.all().delete()
+
 
     cantidad = recibos.filter(partida='Hs Extras').count()
     pending = recibos.filter(partida='Feriado').count()
 
-    context = {'recibos': recibos, 'usuarios': usuarios, 'cantidad': cantidad, 'pending': pending, 'empleos': empleos}
+    context = {'recibos': recibos, 'usuarios': usuarios, 'cantidad': cantidad, 'pending': pending,'empleos': empleos}
 
     return render(request, 'accounts/dashboard.html', context)
 
@@ -84,16 +84,13 @@ def usuario(request, pk_test):
 def createRecibo(request):
     form = OrderForm()
     if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            fs = form.save(commit=False)
-            fs.user = request.user
-            fs.save()
-            return redirect('/')
+            form = OrderForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/')
 
     context = {'form': form}
     return render(request, 'accounts/order_form.html', context)
-
 
 @login_required(login_url='login')
 def updateRecibo(request, pk):
@@ -125,6 +122,11 @@ def deleteRecibo(request, pk):
 def Informacion(request):
     return render(request, 'accounts/informacion.html')
 
+@login_required(login_url ='login')
+def empleo(request):
+    empleos = Empleo.objects.all()
+    return render(request,'accounts/empleo.html', {'empleos': empleos})
+
 
 @login_required(login_url='login')
 def createEmpleo(request):
@@ -142,5 +144,6 @@ def createEmpleo(request):
 
     context = {'form': form, 'allempleo': allempleo}
     return render(request, 'accounts/empleo_form.html', context)
+
 
 

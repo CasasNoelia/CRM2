@@ -7,7 +7,7 @@
             <div class="card card-body">
 
                 <p> Estas seguro de que quieres eliminar "{{ item }}"?</p>
-                <form action="{% url 'delete_order'  item.id %}" method="POST">
+                <form action="{% url 'delete_recibo'  item.id %}" method="POST">
 
                     {% csrf_token %}
                     <a class="btn btn-warning"{% url 'home'%}"> Cancel </a>

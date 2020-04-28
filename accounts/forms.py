@@ -8,7 +8,7 @@ from .models import Recibo, Empleo
 class OrderForm(ModelForm):
     class Meta:
         model = Recibo
-        fields = ['partida', 'cantidad']
+        fields = ['partida', 'cantidad','empleo']
 
 
 class CreateUserForm(UserCreationForm):
