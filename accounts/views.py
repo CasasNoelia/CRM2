@@ -150,4 +150,29 @@ def createEmpleo(request):
     return render(request, 'accounts/empleo_form.html', context)
 
 
+@login_required(login_url='login')
+def updateEmpleo(request, pk):
+
+    empleo = Empleo.objects.get(id=pk)
+    form = Empleo_Form(instance=empleo)
+
+    if request.method == 'POST':
+        form = Empleo_Form(request.POST, instance=empleo)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'accounts/order_form.html', context)
+
+
+@login_required(login_url='login')
+def deleteEmpleo(request, pk):
+    empleo = Empleo.objects.get(id=pk)
+    if request.method == "POST":
+        empleo.delete()
+        return redirect('/')
+
+    context = {'item': empleo}
+    return render(request, 'accounts/delete_empleo.html', context)
 

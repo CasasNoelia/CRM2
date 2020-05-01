@@ -75,8 +75,8 @@ class Empleo(models.Model):
 class Recibo(models.Model):
     PARTIDA = (
         ('Hs Extras', 'Hs Extras'),
-        ('Hs Dia Desc Trab', 'Hs Dia Desc Trab'),
-        ('Feriado', 'Feriado'),
+        ('Hs Dia Descanso Trabajado', 'Hs Dia Descanso Trabajado'),
+        ('Hs Feriado', 'Hs Feriado'),
     )
 
     User = settings.AUTH_USER_MODEL

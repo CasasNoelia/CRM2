@@ -6,31 +6,39 @@
 <br>
 
 <div class="row">
-	<div class="col-md-5">
+    <div class="col-md-4">
 		<h5>USUARIO:</h5>
 		<hr>
-		        <div class="card card-body">
-			<table class="table table-sm">
+        <div class="card card-body">
+            <a class="btn btn-primary  btn-sm btn-block" href="">Datos usuario</a>
+            <table class="table table-sm">
                 <tr>
-                    <a class="btn btn-primary  btn-sm btn-block" href="">Datos usuario</a>
-                    <th></th>
-					<th>Usuario</th>
+                    <th>Usuario</th>
 					<th>Mail</th>
-				</tr>
+
                     <tr>
-                        <td></td>
                         <td>{{request.user}}</td>
                         <td>{{request.user.email}}</td>
+
                     </tr>
-                 <div class="card card-body">
+				</tr>
+            </table>
+        </div>
+    </div>
+        <div class="col-md-8">
+		    <h5>DATOS EMPRESA:</h5>
+		<hr>
+            <div class="card card-body">
 			<table class="table table-sm">
                 <tr>
-                    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_empleo' %}">Ingresar Empleo</a>
-                    <th>Empleo</th>
+                    <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_empleo' %}">Clickea aquí para INGRESAR datos de empleo</a>
+                    <th>Empresa</th>
                     <th>Grupo</th>
 					<th>Salario</th>
                     <th>Valor día</th>
                     <th>Valor hora</th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
 
 				</tr>
                 {% for empleo in empleos %}
@@ -40,6 +48,8 @@
                         <td>{{empleo.salario}}</td>
                         <td>{{empleo.obtener_valor_dia}}</td>
                         <td>{{empleo.obtener_valor_hora}}</td>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'update_empleo' empleo.id %}">Modificar</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_empleo' empleo.id %}">Eliminar</a></td>
                     </tr>
                 {% endfor %}
             </table>
@@ -47,11 +57,11 @@
     </div>
 
 
-	<div class="col-md-7">
-		<h5>PARTIDAS</h5>
+	<div class="col-md-9">
+		<h5>PARTIDAS EXTRAORDINARIAS</h5>
 		<hr>
 		<div class="card card-body">
-            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_recibo' %}">Agregar partidas</a>
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_recibo' %}">Clickea aquí para AGREGAR tus extras</a>
 			<table class="table table-sm">
                 <tr>
 					<th>Tipo partida</th>
@@ -67,7 +77,7 @@
                         <td>{{recibo.fecha_ingreso}}</td>
                         <td>{{recibo.cantidad}}</td>
                         <td>{{recibo.monto}}</td>
-                        <td><a class="btn btn-sm btn-info" href="{% url 'update_recibo' recibo.id %}">Actualizar</a></td>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'update_recibo' recibo.id %}">Modificar</a></td>
                         <td><a class="btn btn-sm btn-danger" href="{% url 'delete_recibo' recibo.id %}">Eliminar</a></td>
                     </tr>
                 {% endfor %}
