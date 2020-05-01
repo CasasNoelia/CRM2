@@ -8,7 +8,7 @@
 			  		<h5 class="card-title">Salario Nominal</h5>
 			  	</div>
                 <div class="card-body">
-			    	<h3 class="card-title">{{user.obtener_suma_de_sueldos}}</h3>
+			    	<h3 class="card-title">{{user.usuario.obtener_total_salarios}}</h3>
 			  	</div>
 			</div>
 		</div>
@@ -21,7 +21,7 @@
 			  		<h5 class="card-title">Total Partidas</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ delivered }}</h3>
+			    	<h3 class="card-title">{{ user.usuario.obtener_suma_de_montos }}</h3>
 			  	</div>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 			  		<h5 class="card-title">Total Descuentos</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ pending }}</h3>
+			    	<h3 class="card-title">{{ user.usuario.obtener_total_descuentos }}</h3>
 			  	</div>
 			</div>
 		</div>
@@ -46,7 +46,7 @@
 			  		<h5 class="card-title">Total Cobrar</h5>
 			  	</div>
 			  	<div class="card-body">
-			    	<h3 class="card-title">{{ pending }}</h3>
+			    	<h3 class="card-title">{{user.usuario.obtener_total_cobrar }}</h3>
 			  	</div>
 			</div>
 		</div>

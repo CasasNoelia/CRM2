@@ -39,6 +39,8 @@ def loginPage(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                Usuario.objects.get_or_create(user=request.user)
+
                 return redirect('home')
             else:
                 messages.info(request, 'Usuario o contraseña incorrecta')
@@ -56,7 +58,7 @@ def logoutUser(request):
 def home(request):
 
     recibos = Recibo.objects.all()
-    usuarios = Usuario.objects.get(pk=request.user.id)
+    usuarios = Usuario.objects.all()
     empleos = Empleo.objects.all()
 
 
@@ -86,7 +88,9 @@ def createRecibo(request):
     if request.method == 'POST':
             form = OrderForm(request.POST)
             if form.is_valid():
-                form.save()
+                fs = form.save(commit=False)
+                fs.user = request.user
+                fs.save()
                 return redirect('/')
 
     context = {'form': form}
